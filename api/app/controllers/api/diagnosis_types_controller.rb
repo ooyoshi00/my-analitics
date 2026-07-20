@@ -1,5 +1,6 @@
 module Api
     class DiagnosisTypesController < ApplicationController
+        allow_unauthenticated_access
         def index
             types = DiagnosisType.includes(:diagnosis).order(:id)
             render json: types.as_json(

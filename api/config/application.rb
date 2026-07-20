@@ -28,5 +28,9 @@ module Api
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # API モードでは cookie ミドルウェアがスタックから外れているため、
+    # 署名付き cookie（セッション認証）を使えるように明示的に追加する。
+    config.middleware.use ActionDispatch::Cookies
   end
 end
